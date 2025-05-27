@@ -117,7 +117,7 @@ def ddgs_scraperapi_patch():
 
     :raises ValueError: If the SCRAPERAPI_API_KEY environment variable is not set.
     """
-    global SCRAPER_API_CLIENT # Declare that we are modifying the global variable
+    global SCRAPER_API_CLIENT  # Declare that we are modifying the global variable
     api_key = os.getenv("SCRAPERAPI_API_KEY")
     if not api_key:
         raise ValueError(
@@ -125,17 +125,17 @@ def ddgs_scraperapi_patch():
             "It is required to use the ScraperAPI patch."
         )
     SCRAPER_API_CLIENT = ScraperAPIClient(api_key=api_key)
-    
+
     DDGS._get_url = _get_url
     DDGS._get_vqd = _get_vqd
 
 
 def _standardize_result(item: dict, mode: str) -> dict:
     """Converts a DDGS result item to a standard schema.
-    
+
     Maps fields from various DDGS search modes (text, news, video, image)
     to a common dictionary structure.
-    
+
     :param item: A dictionary representing a single search result from DDGS.
     :param mode: The search mode (e.g., 'text', 'news') that produced the item.
     :return: A dictionary with a standardized set of keys.
@@ -225,7 +225,7 @@ def web_search(
     if included_site_query:
         keywords = f"{keywords} {included_site_query}"
 
-    raw_results: list[dict[str, Any]] | None = [] # Ensure raw_results is initialized
+    raw_results: list[dict[str, Any]] | None = []  # Ensure raw_results is initialized
 
     if mode == "news":
         raw_results = ddgs.news(
@@ -257,6 +257,6 @@ def web_search(
 
     if raw_results:  # Ensure there are results before trying to standardize
         for item in raw_results:
-            if item: # Check if item is not None
+            if item:  # Check if item is not None
                 results.append(_standardize_result(item, mode))
     return results

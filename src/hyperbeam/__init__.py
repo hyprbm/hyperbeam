@@ -1,4 +1,5 @@
-from .web_search import web_search, ddgs_scraperapi_patch
+from .web_search import ddgs_scraperapi_patch
+from .web_search import web_search
 
 __version__ = "0.1.2"  # Start with an initial version
 
