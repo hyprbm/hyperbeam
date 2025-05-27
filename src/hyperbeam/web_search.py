@@ -16,11 +16,8 @@ from scraperapi_sdk import ScraperAPIClient
 
 LOGGER = logging.getLogger("web_search")
 
-SCRAPER_API_KEY = os.getenv("SCRAPERAPI_API_KEY")
-if SCRAPER_API_KEY:
-    SCRAPER_API_CLIENT = ScraperAPIClient(api_key=SCRAPER_API_KEY)
-else:
-    raise ValueError("SCRAPERAPI_API_KEY is not set")
+# Initialize SCRAPER_API_CLIENT to None. It will be set in ddgs_scraperapi_patch()
+SCRAPER_API_CLIENT: ScraperAPIClient | None = None
 
 
 def _get_url(
@@ -117,7 +114,18 @@ def ddgs_scraperapi_patch():
     requests through the ScraperAPI service.
     This should be called once if ScraperAPI integration is desired for all
     DDGS instances.
+
+    :raises ValueError: If the SCRAPERAPI_API_KEY environment variable is not set.
     """
+    global SCRAPER_API_CLIENT # Declare that we are modifying the global variable
+    api_key = os.getenv("SCRAPERAPI_API_KEY")
+    if not api_key:
+        raise ValueError(
+            "SCRAPERAPI_API_KEY environment variable is not set. "
+            "It is required to use the ScraperAPI patch."
+        )
+    SCRAPER_API_CLIENT = ScraperAPIClient(api_key=api_key)
+    
     DDGS._get_url = _get_url
     DDGS._get_vqd = _get_vqd
 
