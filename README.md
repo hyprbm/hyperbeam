@@ -4,10 +4,8 @@
 
 ## Features
 
-- Search via DuckDuckGo for text, news, videos, and images.
+- Web search powerered by DuckDuckGo (inc. text, news, videos, and images).
 - Optional integration with ScraperAPI for proxied requests.
-- Standardized output schema for search results across different modes.
-- Site-specific search limiting.
 - LLM-powered guided search query generation.
 
 ## Installation
