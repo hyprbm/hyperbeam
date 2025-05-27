@@ -1,6 +1,6 @@
 # hyperbeam
 
-Hyperbeam is a Python library designed to provide intelligent search tooling. 
+**hyperbeam** is a Python library designed to provide intelligent search tooling. 
 
 ## Features
 
