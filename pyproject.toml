@@ -36,13 +36,11 @@ dependencies = [
     "isort>=6.0.1",
     "black>=25.1.0",
     "flake8>=7.2.0",
+    "black[jupyter]>=25.1.0",
 ]
 
 [project.optional-dependencies]
 development = [
-    "black[jupyter]>=25.1.0",
-    "flake8>=7.2.0",
-    "isort>=6.0.1",
 ]
 
 
