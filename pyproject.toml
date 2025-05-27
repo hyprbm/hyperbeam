@@ -1,0 +1,29 @@
+[project]
+name = "hyperbeam"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10.13"
+dependencies = [
+    "aiohttp>=3.12.1",
+    "black[jupyter]>=25.1.0",
+    "bs4>=0.0.2",
+    "duckduckgo-search>=8.0.2",
+    "fastapi>=0.115.12",
+    "flake8>=7.2.0",
+    "isort>=6.0.1",
+    "pip>=25.1.1",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+    "scraperapi-sdk>=1.5.3",
+]
+
+[tool.setuptools.packages.find]
+        where = ["src"] 
+
+[tool.isort]
+force_single_line = true
+
+[tool.flake8]
+max-line-length = 120
+extend-ignore = ["E203"]
